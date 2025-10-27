@@ -1,0 +1,36 @@
+# Sensitive files - NEVER COMMIT!
+.env
+*.env
+.env.*
+
+# Docker compose with passwords
+docker-compose.yml
+
+# Data directories
+postgres_data/
+redis_data/
+portainer_data/
+n8n_data/
+filebrowser_data/
+docker/volumes/
+
+# Temporary files and scripts
+*.log
+*.sh~
+*.tmp
+*.txt
+*.sh
+
+# Local configurations
+config.local.*
+credentials.*
+
+# Backup files
+*.backup
+*.bak
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
