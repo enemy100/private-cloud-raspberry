@@ -1,0 +1,119 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="800" fill="#f5f5f5"/>
+  
+  <!-- Title -->
+  <text x="600" y="30" text-anchor="middle" font-size="28" font-weight="bold" fill="#333">Private Cloud Architecture</text>
+  
+  <!-- Raspberry Pi -->
+  <rect x="450" y="150" width="300" height="400" rx="10" fill="#e8f4f8" stroke="#2c7fa3" stroke-width="3"/>
+  <text x="600" y="180" text-anchor="middle" font-size="20" font-weight="bold" fill="#2c7fa3">Raspberry Pi + DAS</text>
+  
+  <!-- Docker Layer -->
+  <rect x="470" y="200" width="260" height="80" rx="5" fill="#ffffff" stroke="#4a90e2" stroke-width="2"/>
+  <text x="600" y="225" text-anchor="middle" font-size="14" font-weight="bold" fill="#4a90e2">Docker Layer</text>
+  <text x="600" y="245" text-anchor="middle" font-size="12" fill="#666">Traefik (Portainer, n8n...)</text>
+  <text x="600" y="265" text-anchor="middle" font-size="12" fill="#666">+ Cloud Services</text>
+  
+  <!-- Samba -->
+  <rect x="470" y="300" width="120" height="60" rx="5" fill="#ff6b6b" stroke="#c92a2a" stroke-width="2"/>
+  <text x="530" y="325" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Samba</text>
+  <text x="530" y="345" text-anchor="middle" font-size="10" fill="white">Local Access</text>
+  
+  <!-- FileBrowser -->
+  <rect x="610" y="300" width="120" height="60" rx="5" fill="#51cf66" stroke="#2f9e44" stroke-width="2"/>
+  <text x="670" y="325" text-anchor="middle" font-size="12" font-weight="bold" fill="white">FileBrowser</text>
+  <text x="670" y="345" text-anchor="middle" font-size="10" fill="white">Remote Access</text>
+  
+  <!-- Disks -->
+  <rect x="480" y="390" width="100" height="80" rx="5" fill="#ffa94d" stroke="#f76707" stroke-width="2"/>
+  <text x="530" y="415" text-anchor="middle" font-size="12" font-weight="bold" fill="white">RAID 1</text>
+  <text x="530" y="435" text-anchor="middle" font-size="10" fill="white">/dev/sdb</text>
+  <text x="530" y="450" text-anchor="middle" font-size="10" fill="white">/mnt/cloud_main</text>
+  <text x="530" y="465" text-anchor="middle" font-size="9" fill="white">Important Files</text>
+  
+  <rect x="600" y="390" width="100" height="80" rx="5" fill="#ffa94d" stroke="#f76707" stroke-width="2"/>
+  <text x="650" y="415" text-anchor="middle" font-size="12" font-weight="bold" fill="white">External</text>
+  <text x="650" y="435" text-anchor="middle" font-size="10" fill="white">/dev/sdd</text>
+  <text x="650" y="450" text-anchor="middle" font-size="10" fill="white">/mnt/cloud_temp</text>
+  <text x="650" y="465" text-anchor="middle" font-size="9" fill="white">Temp Files</text>
+  
+  <!-- Connections: Disks to Containers -->
+  <line x1="530" y1="390" x2="530" y2="330" stroke="#f76707" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="530" y1="390" x2="470" y2="330" stroke="#c92a2a" stroke-width="2"/>
+  <line x1="650" y1="390" x2="670" y2="330" stroke="#2f9e44" stroke-width="2"/>
+  
+  <!-- Local Access (Windows) -->
+  <rect x="100" y="100" width="200" height="150" rx="10" fill="#228be6" stroke="#1864ab" stroke-width="3"/>
+  <text x="200" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Windows PC</text>
+  <text x="200" y="155" text-anchor="middle" font-size="14" fill="white">Local Network</text>
+  <text x="200" y="180" text-anchor="middle" font-size="12" fill="white">\\192.168.x.x</text>
+  <circle cx="200" cy="215" r="5" fill="white"/>
+  <text x="200" y="235" text-anchor="middle" font-size="11" fill="white">Samba Share</text>
+  
+  <!-- Connection: Windows to Samba -->
+  <line x1="300" y1="175" x2="470" y2="330" stroke="#1864ab" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="360" y="240" font-size="12" fill="#666">445/139</text>
+  
+  <!-- Cloudflare -->
+  <rect x="900" y="100" width="200" height="150" rx="10" fill="#f59f00" stroke="#d48c00" stroke-width="3"/>
+  <text x="1000" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Cloudflare</text>
+  <text x="1000" y="155" text-anchor="middle" font-size="14" fill="white">Tunnel</text>
+  <text x="1000" y="180" text-anchor="middle" font-size="12" fill="white">cloud.your</text>
+  <text x="1000" y="195" text-anchor="middle" font-size="12" fill="white">domain.com</text>
+  
+  <!-- Connection: Traefik to Cloudflare -->
+  <line x1="750" y1="240" x2="900" y2="175" stroke="#f59f00" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <text x="800" y="195" font-size="12" fill="#666">HTTPS</text>
+  
+  <!-- Remote Access (Mobile/Browser) -->
+  <rect x="100" y="550" width="200" height="150" rx="10" fill="#51cf66" stroke="#2f9e44" stroke-width="3"/>
+  <text x="200" y="580" text-anchor="middle" font-size="16" font-weight="bold" fill="white">Mobile/PC</text>
+  <text x="200" y="605" text-anchor="middle" font-size="14" fill="white">Remote Access</text>
+  <text x="200" y="630" text-anchor="middle" font-size="12" fill="white">Browser</text>
+  <circle cx="200" cy="655" r="5" fill="white"/>
+  <text x="200" y="675" text-anchor="middle" font-size="11" fill="white">FileBrowser</text>
+  
+  <!-- Connection: Mobile to Cloudflare -->
+  <line x1="300" y1="625" x2="900" y2="175" stroke="#51cf66" stroke-width="3" stroke-dasharray="8,4" marker-end="url(#arrowhead)"/>
+  <text x="550" y="395" font-size="12" fill="#666">HTTPS</text>
+  
+  <!-- Internet Cloud -->
+  <ellipse cx="550" cy="370" rx="80" ry="40" fill="#e8f4f8" stroke="#4a90e2" stroke-width="2" opacity="0.5"/>
+  <text x="550" y="375" text-anchor="middle" font-size="12" fill="#4a90e2">Internet</text>
+  
+  <!-- Arrows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Legend -->
+  <rect x="850" y="550" width="320" height="230" rx="10" fill="#ffffff" stroke="#dee2e6" stroke-width="2"/>
+  <text x="1010" y="575" text-anchor="middle" font-size="18" font-weight="bold" fill="#333">Legend</text>
+  
+  <!-- Legend Items -->
+  <rect x="870" y="590" width="30" height="20" fill="#ff6b6b"/>
+  <text x="910" y="605" font-size="12" fill="#333">Samba (Local CIFS/SMB)</text>
+  
+  <rect x="870" y="620" width="30" height="20" fill="#51cf66"/>
+  <text x="910" y="635" font-size="12" fill="#333">FileBrowser (Web)</text>
+  
+  <rect x="870" y="650" width="30" height="20" fill="#228be6"/>
+  <text x="910" y="665" font-size="12" fill="#333">Windows Client</text>
+  
+  <rect x="870" y="680" width="30" height="20" fill="#51cf66"/>
+  <text x="910" y="695" font-size="12" fill="#333">Remote Client</text>
+  
+  <rect x="870" y="710" width="30" height="20" fill="#ffa94d"/>
+  <text x="910" y="725" font-size="12" fill="#333">DAS (External Disks)</text>
+  
+  <rect x="870" y="740" width="30" height="20" fill="#f59f00"/>
+  <text x="910" y="755" font-size="12" fill="#333">Cloudflare Tunnel</text>
+  
+  <!-- Data flow annotations -->
+  <text x="50" y="180" font-size="11" fill="#666" font-style="italic">← Fast LAN</text>
+  <text x="50" y="605" font-size="11" fill="#666" font-style="italic">← Secure HTTPS</text>
+</svg>
+
