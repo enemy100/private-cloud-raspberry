@@ -2,6 +2,10 @@
 
 A complete guide for setting up a private cloud storage solution on Raspberry Pi using Samba for local network access and FileBrowser for remote web access.
 
+<img width="1067" height="787" alt="image" src="https://github.com/user-attachments/assets/4759c81f-f193-408c-b04c-319c545d5dc0" />
+<img width="1906" height="540" alt="image" src="https://github.com/user-attachments/assets/24af5439-e1d9-4eb3-892e-399abeac7fa0" />
+
+
 ## 🎯 What This Does
 
 This solution provides:
