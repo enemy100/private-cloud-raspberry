@@ -63,8 +63,9 @@ sudo mkdir -p /mnt/cloud_temp/{temporarios,downloads}
 
 # 8. Configure permissions IMPORTANT!
 # FileBrowser runs as UID 1000, so disks need permissions for UID 1000
-sudo chown -R robson:robson /mnt/cloud_main
-sudo chown -R robson:robson /mnt/cloud_temp
+# Replace 'user' with your actual username
+sudo chown -R user:user /mnt/cloud_main
+sudo chown -R user:user /mnt/cloud_temp
 
 # 9. Give write permissions
 sudo chmod -R 775 /mnt/cloud_main
@@ -79,8 +80,8 @@ Edit `~/Downloads/.env` and add:
 # Cloud domains
 DOMINIO_CLOUD=cloud.yourdomain.com
 
-# Samba credentials
-SAMBA_USER=robson
+# Samba credentials (replace with your username)
+SAMBA_USER=user
 SAMBA_PASSWORD=YourStrongPassword123
 SAMBA_GUEST=no
 ```
@@ -101,7 +102,7 @@ Add these two new services:
       - /mnt/cloud_main:/mnt/cloud_main:rw
       - /mnt/cloud_temp:/mnt/cloud_temp:rw
     environment:
-      - TZ=America/Sao_Paulo
+      - TZ=America/New_York
       - USER=${SAMBA_USER};${SAMBA_PASSWORD}
       - SHARE=arquivos;/mnt/cloud_main/arquivos;yes;no;no;all;${SAMBA_USER};${SAMBA_USER}
       - SHARE=temp;/mnt/cloud_temp/temporarios;yes;no;no;all;${SAMBA_USER};${SAMBA_USER}
@@ -215,7 +216,7 @@ Look for: "User 'admin' initialized with randomly generated password: XXXX"
 1. Press Win + R
 2. Type: \\[RASPBERRY-IP]
    Example: \\192.168.1.100
-3. Enter username: robson
+3. Enter username: [your-samba-username]
 4. Enter password: [configured password]
 5. Done! You'll see:
    - arquivos (RAID 1)
@@ -263,7 +264,7 @@ chmod +x ~/backup_nuvem.sh
 
 # Schedule daily backup at 3am
 crontab -e
-# Add: 0 3 * * * /home/robson/backup_nuvem.sh
+# Add: 0 3 * * * /home/user/backup_nuvem.sh
 ```
 
 ## ✅ How to Use
@@ -368,9 +369,9 @@ sudo ufw allow from 192.168.0.0/16 to any port 139
 # Check current owner
 ls -ld /mnt/cloud_main /mnt/cloud_temp
 
-# Fix to UID 1000 (robson or user)
-sudo chown -R robson:robson /mnt/cloud_main
-sudo chown -R robson:robson /mnt/cloud_temp
+# Fix to UID 1000 (replace 'user' with your actual username)
+sudo chown -R user:user /mnt/cloud_main
+sudo chown -R user:user /mnt/cloud_temp
 
 # Give write permissions
 sudo chmod -R 775 /mnt/cloud_main
@@ -400,7 +401,7 @@ chmod -R 664 /mnt/cloud_temp/temporarios/*
 # After that, new files will be created with 664 (configured with umask 002)
 ```
 
-**Samba access:** Will work normally since you use user `robson` which has permission.
+**Samba access:** Will work normally since you use the configured user which has permission.
 
 ---
 
@@ -409,14 +410,14 @@ chmod -R 664 /mnt/cloud_temp/temporarios/*
 ### **FileBrowser Permissions**
 
 - FileBrowser container runs as user `user` (UID/GID 1000)
-- User `robson` on host also has UID 1000
-- When configuring permissions, use `robson:robson` or `1000:1000`
+- Your user on host should also have UID 1000
+- When configuring permissions, use `user:user` or `1000:1000` (replace 'user' with your actual username)
 - The FileBrowser "admin" is just web login, doesn't affect system permissions
 
 ### **Permission Structure**
 
 ```
-robson (UID 1000) on host
+your-user (UID 1000) on host
     ↕
 user (UID 1000) in FileBrowser container
     ↕
