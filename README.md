@@ -2,8 +2,11 @@
 
 A complete guide for setting up a private cloud storage solution on Raspberry Pi using Samba for local network access and FileBrowser for remote web access.
 
-<img width="1067" height="787" alt="image" src="https://github.com/user-attachments/assets/4759c81f-f193-408c-b04c-319c545d5dc0" />
-<img width="1906" height="540" alt="image" src="https://github.com/user-attachments/assets/24af5439-e1d9-4eb3-892e-399abeac7fa0" />
+## 🏗️ Architecture
+
+![Architecture Diagram](architecture.svg)
+
+*Diagram showing Raspberry Pi with DAS (Direct Attached Storage) configuration, Samba for local access, FileBrowser for remote access via Cloudflare Tunnel*
 
 
 ## 🎯 What This Does
@@ -42,7 +45,7 @@ This solution provides:
 ## 📦 Requirements
 
 - Raspberry Pi with Ubuntu/Raspberry Pi OS
-- Two external USB disks (one for RAID 1, one normal)
+- **DAS (Direct Attached Storage)**: Two external USB disks (one for RAID 1, one normal)
 - Cloudflare account (for tunnel)
 - Existing Docker and Docker Compose setup
 - Traefik reverse proxy configured
